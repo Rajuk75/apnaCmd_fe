@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 flex items-center justify-between w-full max-w-5xl shadow-2xl shadow-purple-500/10">
+      <nav className="bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex items-center justify-between w-full max-w-7xl shadow-2xl shadow-purple-500/10">
         {/* Logo */}
         <Link to={ROUTES.HOME} className="flex items-center gap-2 group">
           <div className="p-1.5 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-lg group-hover:scale-105 transition-transform duration-300">

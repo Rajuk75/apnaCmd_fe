@@ -4,8 +4,8 @@ export const APP_TEXT = {
     hi: 'डमी_नाम'
   },
   HERO_BADGE: {
-    en: 'AI SOFTWARE SOLUTIONS',
-    hi: 'एआई सॉफ्टवेयर समाधान'
+    en: 'SOFTWARE SOLUTIONS',
+    hi: 'सॉफ्टवेयर समाधान'
   },
   HERO_TITLE: {
     en: 'Transform your business with',
