@@ -12,15 +12,13 @@ const Footer = () => {
   const t = (obj) => getText(obj) || '';
 
   return (
-    <footer className="bg-[#111] pt-20 pb-10 border-t border-white/5">
-      {/* Simple Top Border - No curves */}
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-[#111] pt-16 pb-8 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-6 h-6 text-yellow-500" />
+              <Sparkles className="w-6 h-6 text-blue-500" />
               <span className="text-white font-bold text-xl tracking-tight">
                 {getText(text.app.APP_NAME)}
               </span>
@@ -28,7 +26,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               {getText(text.app.FOOTER_TEXT?.DESCRIPTION)}
             </p>
-            <div className="flex items-center gap-2 text-gray-400 text-sm hover:text-yellow-400 transition-colors cursor-pointer">
+            <div className="flex items-center gap-2 text-gray-400 text-sm hover:text-blue-400 transition-colors cursor-pointer">
               <Mail className="w-4 h-4" />
               <span>{text.app.FOOTER_TEXT?.EMAIL}</span>
             </div>
@@ -36,11 +34,11 @@ const Footer = () => {
 
           {/* Links Column */}
           <div>
-            <h3 className="text-yellow-400 font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.TITLE)}</h3>
+            <h3 className="text-white font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.TITLE)}</h3>
             <ul className="space-y-4">
               {text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.ITEMS?.map((item, index) => (
                 <li key={index}>
-                  <a href={item.path} className="text-gray-400 hover:text-yellow-400 text-sm transition-colors">
+                  <a href={item.path} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
                     {getText(item)}
                   </a>
                 </li>
@@ -50,11 +48,11 @@ const Footer = () => {
 
           {/* Resources Column */}
           <div>
-            <h3 className="text-yellow-400 font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.TITLE)}</h3>
+            <h3 className="text-white font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.TITLE)}</h3>
             <ul className="space-y-4">
               {text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.ITEMS?.map((item, index) => (
                 <li key={index}>
-                  <a href={item.path} className="text-gray-400 hover:text-yellow-400 text-sm transition-colors">
+                  <a href={item.path} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
                     {getText(item)}
                   </a>
                 </li>
@@ -64,11 +62,11 @@ const Footer = () => {
 
           {/* Company Column */}
           <div>
-            <h3 className="text-yellow-400 font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.TITLE)}</h3>
+            <h3 className="text-white font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.TITLE)}</h3>
             <ul className="space-y-4">
               {text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.ITEMS?.map((item, index) => (
                 <li key={index}>
-                  <a href={item.path} className="text-gray-400 hover:text-yellow-400 text-sm transition-colors">
+                  <a href={item.path} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
                     {getText(item)}
                   </a>
                 </li>
@@ -77,8 +75,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 text-center">
+        {/* Copyright */}
+        <div className="pt-8 border-t border-white/5 text-center">
           <p className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} {getText(text.app.APP_NAME)}. {getText(text.app.FOOTER_TEXT?.COPYRIGHT)}
           </p>

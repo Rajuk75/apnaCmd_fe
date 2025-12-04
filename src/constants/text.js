@@ -1,7 +1,7 @@
 export const APP_TEXT = {
   APP_NAME: {
-    en: 'Dummy_Name',
-    hi: 'डमी_नाम'
+    en: 'plusDotAi',
+    hi: 'plusDotAi'
   },
   HERO_BADGE: {
     en: 'SOFTWARE SOLUTIONS',
@@ -115,7 +115,12 @@ export const FOOTER_TEXT = {
     en: 'All rights reserved.',
     hi: 'सर्वाधिकार सुरक्षित।'
   },
-  EMAIL: 'support@dummyname.io'
+  EMAIL: 'support@plusDotAi.com',
+  CTA_CARD: {
+    TITLE: { en: 'Create with the highest quality Voice AI', hi: 'उच्चतम गुणवत्ता वाली वॉयस एआई के साथ बनाएं' },
+    BUTTON_PRIMARY: { en: 'Start for Free', hi: 'मुफ्त में शुरू करें' },
+    BUTTON_SECONDARY: { en: 'Contact Sales', hi: 'बिक्री से संपर्क करें' }
+  }
 };
 
 export const SHOWCASE_TEXT = {

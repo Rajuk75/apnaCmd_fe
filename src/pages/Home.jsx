@@ -8,6 +8,8 @@ import WaveBackground from '../components/home/WaveBackground';
 import FAQSection from '../components/home/FAQSection';
 import { useLanguage } from '../context/LanguageContext';
 
+import Insights from './Insights';
+
 const Home = () => {
   const { getText, text } = useLanguage();
 
@@ -78,6 +80,7 @@ const Home = () => {
       
       <ShowcaseCarousel />
       <ServicesSection />
+      <Insights />
       <FAQSection />
     </Layout>
   );

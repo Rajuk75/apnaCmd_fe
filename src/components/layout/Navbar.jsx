@@ -12,7 +12,7 @@ const Navbar = () => {
     { name: getText(text.app.NAV_DASHBOARD), path: '#solutions' },
     { name: getText(text.app.NAV_LIBRARY), path: '#' },
     { name: getText(text.app.NAV_PRICING), path: '#' },
-    { name: getText(text.app.NAV_BLOG), path: '#' },
+    { name: getText(text.app.NAV_BLOG), path: '#insights' },
   ];
 
   return (
