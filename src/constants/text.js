@@ -1,7 +1,7 @@
 export const APP_TEXT = {
   APP_NAME: {
-    en: 'sagarTech',
-    hi: 'sagarTech'
+    en: 'Sagar Tech',
+    hi: 'Sagar Tech'
   },
   HERO_BADGE: {
     en: 'SOFTWARE SOLUTIONS',
