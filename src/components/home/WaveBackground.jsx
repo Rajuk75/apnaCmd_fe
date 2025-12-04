@@ -1,10 +1,11 @@
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, MeshTransmissionMaterial } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Sphere, MeshTransmissionMaterial } from "@react-three/drei";
+import { Color } from "three";
 
 const AnimatedSphere = () => {
   const sphereRef = useRef();
+  const backgroundColor = useMemo(() => new Color("#000000"), []);
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
@@ -23,20 +24,25 @@ const AnimatedSphere = () => {
           resolution={512}
           transmission={1}
           roughness={0.0}
-          thickness={3.0} // Thick glass for strong rim effect
+          thickness={3.0}
           ior={1.5}
-          chromaticAberration={1.0} // Prism effect at edges
+          chromaticAberration={1.0}
           anisotropy={0.5}
-          distortion={0.2} // Subtle distortion
+          distortion={0.2}
           distortionScale={0.5}
           temporalDistortion={0.1}
-          color="#d8b4fe" // Light Purple/Pink
-          background={new THREE.Color('#000000')}
+          color="#d8b4fe"
+          background={backgroundColor}
         />
       </Sphere>
-      
+
       {/* Inner Glow Light */}
-      <pointLight position={[0, 0, 0]} intensity={2} color="#a855f7" distance={5} />
+      <pointLight
+        position={[0, 0, 0]}
+        intensity={2}
+        color="#a855f7"
+        distance={5}
+      />
     </group>
   );
 };
@@ -44,14 +50,26 @@ const AnimatedSphere = () => {
 const WaveBackground = () => {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none opacity-60">
-      <Canvas camera={{ position: [0, 0, 5] }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5] }}
+        dpr={[1, 2]} // Limit pixel ratio for performance
+        performance={{ min: 0.5 }} // Auto-adjust quality
+      >
         <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} color="#fbbf24" /> {/* Yellow light */}
-        <directionalLight position={[-10, -10, -5]} intensity={1} color="#ec4899" /> {/* Pink light */}
+        <directionalLight
+          position={[10, 10, 5]}
+          intensity={1}
+          color="#fbbf24"
+        />
+        <directionalLight
+          position={[-10, -10, -5]}
+          intensity={1}
+          color="#ec4899"
+        />
         <AnimatedSphere />
       </Canvas>
     </div>
   );
 };
 
-export default WaveBackground;
+export default React.memo(WaveBackground);

@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { lazy, Suspense, useCallback, memo } from 'react';
 import { ArrowRight, Sparkles, ShieldCheck, HeadphonesIcon } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import Button from '../components/common/Button';
-import ShowcaseCarousel from '../components/home/ShowcaseCarousel';
-import ServicesSection from '../components/home/ServicesSection';
 import WaveBackground from '../components/home/WaveBackground';
-import FAQSection from '../components/home/FAQSection';
+import SectionLoader from '../components/common/SectionLoader';
 import { useLanguage } from '../context/LanguageContext';
-
-import Insights from './Insights';
+const ShowcaseCarousel = lazy(() => 
+  import(/* webpackPrefetch: true */ '../components/home/ShowcaseCarousel')
+);
+const ServicesSection = lazy(() => 
+  import(/* webpackPrefetch: true */ '../components/home/ServicesSection')
+);
+const Insights = lazy(() => 
+  import(/* webpackPrefetch: true */ './Insights')
+);
+const FAQSection = lazy(() => 
+  import(/* webpackPrefetch: true */ '../components/home/FAQSection')
+);
 
 const Home = () => {
   const { getText, text } = useLanguage();
 
-  const handleWhatsAppClick = () => {
+  const handleWhatsAppClick = useCallback(() => {
     const phoneNumber = text.app.SERVICES?.WHATSAPP?.NUMBER || '6290301341';
     const message = getText(text.app.SERVICES?.WHATSAPP?.MESSAGE) || 'Hi, I would like to enquire about your services.';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
-  };
+  }, [text, getText]);
 
   return (
     <Layout>
@@ -78,10 +86,18 @@ const Home = () => {
         </div>
       </div>
       
-      <ShowcaseCarousel />
-      <ServicesSection />
-      <Insights />
-      <FAQSection />
+      <Suspense fallback={<SectionLoader />}>
+        <ShowcaseCarousel />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Insights />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <FAQSection />
+      </Suspense>
     </Layout>
   );
 };
