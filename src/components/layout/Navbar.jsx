@@ -9,10 +9,10 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: getText(text.app.NAV_DASHBOARD), path: '#solutions' },
-    { name: getText(text.app.NAV_LIBRARY), path: '#' },
-    { name: getText(text.app.NAV_PRICING), path: '#' },
-    { name: getText(text.app.NAV_BLOG), path: '#insights' },
+    { name: 'Solutions', path: ROUTES.SOLUTIONS },
+    { name: 'Case Studies', path: ROUTES.CASE_STUDIES },
+    { name: 'Services', path: ROUTES.SERVICES },
+    { name: 'Insights', path: ROUTES.INSIGHTS },
   ];
 
   return (
@@ -31,13 +31,13 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link, index) => (
-            <a
+            <Link
               key={index}
-              href={link.path}
+              to={link.path}
               className="text-gray-400 hover:text-white text-sm font-medium transition-colors duration-200"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -71,14 +71,14 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="absolute top-20 left-4 right-4 bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 shadow-2xl md:hidden flex flex-col gap-4 animate-in slide-in-from-top-4 duration-200">
           {navLinks.map((link, index) => (
-            <a
+            <Link
               key={index}
-              href={link.path}
+              to={link.path}
               className="text-gray-300 hover:text-white py-2 px-4 hover:bg-white/5 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="h-px bg-white/10 my-2" />
           <div className="flex items-center justify-between px-4">

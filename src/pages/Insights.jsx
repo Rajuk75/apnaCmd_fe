@@ -1,174 +1,146 @@
 import React from 'react';
-import { Zap, Globe, Smartphone, Cpu, Shield, Code, Terminal, Play, Phone, Server, Database, Layout, Rocket } from 'lucide-react';
-
-const FeatureCard = ({ title, description, children, className = "" }) => (
-  <div className={`bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 flex flex-col hover:border-zinc-700 transition-colors duration-300 ${className}`}>
-    <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
-    <p className="text-zinc-400 text-sm leading-relaxed mb-6">{description}</p>
-    <div className="mt-auto">
-      {children}
-    </div>
-  </div>
-);
-
-const StatItem = ({ value, label }) => (
-  <div className="flex flex-col">
-    <span className="text-white font-bold text-xl">{value}</span>
-    <span className="text-zinc-500 text-xs">{label}</span>
-  </div>
-);
-
-const ListItem = ({ icon: Icon, text }) => (
-  <div className="flex items-center gap-3 py-1">
-    <div className="w-0.5 h-4 bg-zinc-700"></div>
-    {Icon && <Icon size={16} className="text-white" />}
-    <span className="text-zinc-300 text-sm font-medium">{text}</span>
-  </div>
-);
+import PageLayout from '../components/layout/PageLayout';
+import { BookOpen, User, ArrowRight, Tag, Clock } from 'lucide-react';
 
 const Insights = () => {
+  const posts = [
+    {
+      id: 1,
+      title: 'The Future of Web Development: 2025 Outlook',
+      excerpt: 'Exploring the latest trends in React, AI-driven UIs, and edge computing. How the landscape is shifting towards server-driven state.',
+      author: 'Alex Morgan',
+      role: 'CTO',
+      date: 'Dec 05, 2025',
+      readTime: '5 min read',
+      category: 'Technology',
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80'
+    },
+    {
+      id: 2,
+      title: 'Mastering Dark Mode Design',
+      excerpt: 'Tips and tricks for creating stunning dark interfaces that reduce eye strain and look premium. Why contrast ratios matter more than ever.',
+      author: 'Sarah Lee',
+      role: 'Lead Designer',
+      date: 'Dec 02, 2025',
+      readTime: '4 min read',
+      category: 'Design',
+      image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80'
+    },
+    {
+      id: 3,
+      title: 'Scaling Node.js Microservices',
+      excerpt: 'A comprehensive guide to backend architecture, message queues with RabbitMQ, and managing distributed states in high-load systems.',
+      author: 'David Chen',
+      role: 'Snr. Engineer',
+      date: 'Nov 28, 2025',
+      readTime: '8 min read',
+      category: 'Engineering',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80'
+    },
+     {
+      id: 4,
+      title: 'AI in Modern Apps: Beyond Chatbots',
+      excerpt: 'How to integrate LLMs, vector databases, and semantic search into your everyday applications to create truly intelligent user flows.',
+      author: 'Emily White',
+      role: 'AI Researcher',
+      date: 'Nov 25, 2025',
+      readTime: '6 min read',
+      category: 'AI',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80'
+    },
+  ];
+
   return (
-    <section id="insights" className="py-24 bg-[#0a0a0a] text-white font-sans selection:bg-white/20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-6">
-            <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-            <span className="text-xs font-bold tracking-widest text-zinc-400 uppercase">OUR EXPERTISE</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tight max-w-4xl leading-[1.1]">
-            Building the most advanced software solutions for your business
-          </h1>
-        </div>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Card 1: Web Development */}
-          <FeatureCard 
-            title="Custom Web Development" 
-            description="We build high-performance, scalable, and visually stunning websites tailored to your brand. Using the latest technologies to ensure speed and SEO optimization."
-          >
-            <div className="space-y-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-white font-medium text-sm"><Zap size={14} /> High Performance</div>
-                <p className="text-zinc-500 text-xs pl-6">Blazing fast load times</p>
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-white font-medium text-sm"><Layout size={14} /> Modern UI/UX</div>
-                <p className="text-zinc-500 text-xs pl-6">Intuitive and engaging designs</p>
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-white font-medium text-sm"><Globe size={14} /> SEO Optimized</div>
-                <p className="text-zinc-500 text-xs pl-6">Rank higher on search engines</p>
-              </div>
-            </div>
-          </FeatureCard>
-
-          {/* Card 2: Mobile App Development */}
-          <FeatureCard 
-            title="Mobile App Development" 
-            description="Native and cross-platform mobile applications that provide seamless user experiences on iOS and Android devices."
-          >
-            <div className="flex gap-8 mb-8">
-              <StatItem value="4.8+" label="App Store Rating" />
-              <StatItem value="100%" label="Client Satisfaction" />
-            </div>
-            
-            <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-xs text-zinc-400">iOS (Swift/SwiftUI)</span>
-                <div className="h-1.5 w-16 bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full w-3/4 bg-blue-500 rounded-full"></div>
+    <PageLayout 
+      title="Latest Insights" 
+      subtitle="Thoughts, tutorials, and trends from our engineering team."
+    >
+      {/* Featured Post (First one) */}
+      <div className="mb-16">
+         <div className="group relative bg-[#111] border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all cursor-pointer">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="h-64 md:h-auto overflow-hidden">
+                    <img src={posts[0].image} alt={posts[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-xs text-zinc-400">Android (Kotlin/Jetpack)</span>
-                <div className="h-1.5 w-16 bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full w-1/2 bg-purple-500 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </FeatureCard>
-
-          {/* Card 3: AI & ML */}
-          <FeatureCard 
-            title="AI & Machine Learning" 
-            description="Integrate cutting-edge AI models into your business processes. From chatbots to predictive analytics, we help you leverage the power of AI."
-          >
-            <div className="flex gap-8 mb-12">
-              <StatItem value="24/7" label="Automation" />
-              <StatItem value="Smart" label="Insights" />
-            </div>
-            
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center">
-                <Cpu size={20} fill="currentColor" />
-              </div>
-              <div className="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono text-zinc-400">DATA</div>
-              <div className="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono text-zinc-400">MODEL</div>
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center border border-zinc-700">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-pink-500/20 to-purple-500/20"></div>
-              </div>
-            </div>
-          </FeatureCard>
-
-          {/* Card 4: Full Stack Solutions (Wide) */}
-          <FeatureCard 
-            title="Full Stack Solutions" 
-            description="End-to-end software development services. We handle everything from frontend design to backend architecture and database management."
-            className="md:col-span-2 relative overflow-hidden"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-2">
-                <ListItem icon={Server} text="Scalable Architecture" />
-                <ListItem icon={Database} text="Database Management" />
-                <ListItem icon={Shield} text="Security First" />
-                <ListItem icon={Code} text="API Integration" />
-                <ListItem icon={Rocket} text="Cloud Deployment" />
-                <ListItem icon={Terminal} text="DevOps & CI/CD" />
-              </div>
-              
-              <div className="relative h-48 md:h-full min-h-[200px] flex items-center justify-center">
-                 {/* Abstract visual for the tech sphere */}
-                 <div className="w-40 h-40 rounded-full bg-gradient-to-br from-blue-400/20 via-indigo-500/20 to-purple-600/20 blur-xl absolute"></div>
-                 <div className="w-32 h-32 rounded-full border border-zinc-700 flex items-center justify-center relative z-10 bg-black/50 backdrop-blur-sm">
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-200 opacity-80 animate-pulse"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <Code size={24} className="text-black mix-blend-overlay" />
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-6">
+                        <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-wider">
+                            Featured
+                        </span>
+                        <span className="text-gray-500 text-sm flex items-center gap-1">
+                            <Clock className="w-3 h-3" /> {posts[0].readTime}
+                        </span>
                     </div>
-                 </div>
-              </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+                        {posts[0].title}
+                    </h2>
+                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                        {posts[0].excerpt}
+                    </p>
+                    <div className="flex items-center gap-4">
+                        <img src={posts[0].avatar} alt={posts[0].author} className="w-10 h-10 rounded-full border border-white/10" />
+                        <div>
+                            <p className="text-white font-bold text-sm">{posts[0].author}</p>
+                            <p className="text-gray-500 text-xs">{posts[0].role}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </FeatureCard>
+         </div>
+      </div>
 
-          {/* Card 5: Cloud & DevOps */}
-          <FeatureCard 
-            title="Cloud & DevOps" 
-            description="Robust cloud infrastructure and DevOps practices to ensure your applications are always up, secure, and scalable."
+      {/* Grid for other posts */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.slice(1).map((post) => (
+          <div 
+            key={post.id}
+            className="group flex flex-col bg-[#0f0f0f] border border-white/5 rounded-3xl overflow-hidden hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300"
           >
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-white font-medium text-sm">AWS, Azure & GCP</div>
-                  <p className="text-zinc-500 text-xs">Multi-cloud expertise</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-white font-medium text-sm">Docker & Kubernetes</div>
-                  <p className="text-zinc-500 text-xs">Containerization & Orchestration</p>
-                </div>
+            {/* Image */}
+            <div className="h-56 relative overflow-hidden">
+               <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+               <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 text-xs font-bold text-black bg-white backdrop-blur-md rounded-full shadow-lg">
+                    {post.category}
+                  </span>
+               </div>
+            </div>
+
+            <div className="p-8 flex-1 flex flex-col">
+              <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                <span className="flex items-center gap-1">
+                  <Tag className="w-3 h-3" /> {post.date}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Clock className="w-3 h-3" /> {post.readTime}
+                </span>
               </div>
               
-              <button className="bg-white text-black text-xs font-bold py-3 px-6 rounded-full hover:bg-zinc-200 transition-colors w-fit mt-4">
-                CONTACT US
-              </button>
-            </div>
-          </FeatureCard>
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
+                {post.title}
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                {post.excerpt}
+              </p>
 
-        </div>
+              <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                <div className="flex items-center gap-3">
+                    <img src={post.avatar} alt={post.author} className="w-8 h-8 rounded-full border border-white/10" />
+                    <span className="text-gray-300 text-xs font-medium">{post.author}</span>
+                </div>
+                <button className="text-white hover:text-purple-400 transition-colors">
+                    <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </PageLayout>
   );
 };
 

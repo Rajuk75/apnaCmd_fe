@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      <Footer />
+      <Footer className="relative z-50" />
     </div>
   );
 };

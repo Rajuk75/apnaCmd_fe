@@ -1,6 +1,8 @@
 import React from 'react';
 import { Sparkles, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import { ROUTES } from '../../constants/routes';
 
 const Footer = () => {
   const { getText, text } = useLanguage();
@@ -32,13 +34,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.TITLE)}</h3>
             <ul className="space-y-4">
-              {text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.ITEMS?.map((item, index) => (
-                <li key={index}>
-                  <a href={item.path} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
-                    {getText(item)}
-                  </a>
-                </li>
-              ))}
+               <li><Link to={ROUTES.WEB_DEVELOPMENT} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.ITEMS?.[0])}</Link></li>
+               <li><Link to={ROUTES.APP_DEVELOPMENT} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.ITEMS?.[1])}</Link></li>
+               <li><Link to={ROUTES.CLOUD_SERVICES} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.LINKS?.ITEMS?.[2])}</Link></li>
             </ul>
           </div>
 
@@ -46,13 +44,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.TITLE)}</h3>
             <ul className="space-y-4">
-              {text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.ITEMS?.map((item, index) => (
-                <li key={index}>
-                  <a href={item.path} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
-                    {getText(item)}
-                  </a>
-                </li>
-              ))}
+               <li><Link to={ROUTES.ABOUT} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.ITEMS?.[0])}</Link></li>
+               <li><Link to={ROUTES.CAREERS} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.ITEMS?.[1])}</Link></li>
+               <li><Link to={ROUTES.CONTACT} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.RESOURCES?.ITEMS?.[2])}</Link></li>
             </ul>
           </div>
 
@@ -60,13 +54,10 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-6">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.TITLE)}</h3>
             <ul className="space-y-4">
-              {text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.ITEMS?.map((item, index) => (
-                <li key={index}>
-                  <a href={item.path} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
-                    {getText(item)}
-                  </a>
-                </li>
-              ))}
+               <li><Link to={ROUTES.PRIVACY} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.ITEMS?.[0])}</Link></li>
+               <li><Link to={ROUTES.TERMS} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.ITEMS?.[1])}</Link></li>
+               <li><Link to={ROUTES.REFUND} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.ITEMS?.[2])}</Link></li>
+               <li><Link to={ROUTES.GDPR} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{getText(text.app.FOOTER_TEXT?.COLUMNS?.COMPANY?.ITEMS?.[3])}</Link></li>
             </ul>
           </div>
         </div>

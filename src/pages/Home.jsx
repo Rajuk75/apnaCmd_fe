@@ -11,8 +11,8 @@ const ShowcaseCarousel = lazy(() =>
 const ServicesSection = lazy(() => 
   import(/* webpackPrefetch: true */ '../components/home/ServicesSection')
 );
-const Insights = lazy(() => 
-  import(/* webpackPrefetch: true */ './Insights')
+const HomeInsights = lazy(() => 
+  import(/* webpackPrefetch: true */ '../components/home/HomeInsights')
 );
 const FAQSection = lazy(() => 
   import(/* webpackPrefetch: true */ '../components/home/FAQSection')
@@ -32,7 +32,9 @@ const Home = () => {
     <Layout>
       <div className="relative overflow-hidden bg-[#0a0a0a] min-h-[calc(100vh-6rem)] flex items-center justify-center">
         {/* 3D Wave Background */}
-        <WaveBackground />
+        <div className="absolute inset-0 pointer-events-none">
+          <WaveBackground />
+        </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Badge */}
@@ -93,7 +95,7 @@ const Home = () => {
         <ServicesSection />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
-        <Insights />
+        <HomeInsights />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
         <FAQSection />
