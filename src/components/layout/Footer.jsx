@@ -4,11 +4,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 const Footer = () => {
   const { getText, text } = useLanguage();
-  const footerText = text.app.FOOTER_TEXT || {}; // Fallback if not yet loaded
-  // Accessing directly from imported constants for now to ensure availability if context update lags
-  // but ideally should come from context. Let's use the context structure assuming it's updated.
-  
-  // Helper to safely get text
+  const footerText = text.app.FOOTER_TEXT || {}; 
   const t = (obj) => getText(obj) || '';
 
   return (
