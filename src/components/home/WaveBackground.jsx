@@ -1,71 +1,54 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, MeshTransmissionMaterial } from "@react-three/drei";
-import { Color } from "three";
+import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 
 const AnimatedSphere = () => {
   const sphereRef = useRef();
-  const backgroundColor = useMemo(() => new Color("#000000"), []);
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     if (sphereRef.current) {
-      sphereRef.current.rotation.y = t * 0.1;
+      sphereRef.current.rotation.x = t * 0.1;
+      sphereRef.current.rotation.y = t * 0.15;
     }
   });
 
   return (
-    <group rotation={[0, 0, 0]}>
-      {/* Glossy Rim Orb - Matches the reference image */}
-      <Sphere ref={sphereRef} args={[2.8, 64, 64]}>
-        <MeshTransmissionMaterial
-          backside={true}
-          samples={16}
-          resolution={512}
-          transmission={1}
-          roughness={0.0}
-          thickness={3.0}
-          ior={1.5}
-          chromaticAberration={1.0}
-          anisotropy={0.5}
-          distortion={0.2}
-          distortionScale={0.5}
-          temporalDistortion={0.1}
-          color="#d8b4fe"
-          background={backgroundColor}
-        />
-      </Sphere>
-
-      {/* Inner Glow Light */}
-      <pointLight
-        position={[0, 0, 0]}
-        intensity={2}
-        color="#a855f7"
-        distance={5}
+    <Sphere ref={sphereRef} args={[1.6, 64, 64]}>
+      <MeshDistortMaterial
+        color="#8b5cf6"
+        attach="material"
+        distort={0.3}
+        speed={1.5}
+        roughness={0.2}
+        metalness={0.5}
+        transparent
+        opacity={0.9}
       />
-    </group>
+    </Sphere>
   );
 };
 
 const WaveBackground = () => {
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none opacity-60">
+    <div className="absolute inset-0 w-full h-full pointer-events-none opacity-50">
       <Canvas 
-        camera={{ position: [0, 0, 5] }}
-        dpr={[1, 2]} // Limit pixel ratio for performance
-        performance={{ min: 0.5 }} // Auto-adjust quality
+        camera={{ position: [0, 0, 5], fov: 45 }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, powerPreference: "high-performance", alpha: true }}
       >
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.8} />
         <directionalLight
-          position={[10, 10, 5]}
-          intensity={1}
-          color="#fbbf24"
+          position={[5, 5, 5]}
+          intensity={1.2}
+          color="#a855f7"
         />
         <directionalLight
-          position={[-10, -10, -5]}
-          intensity={1}
-          color="#ec4899"
+          position={[-5, -5, -5]}
+          intensity={1.2}
+          color="#d946ef"
         />
+        <pointLight position={[0, 0, 0]} intensity={1.5} color="#c084fc" />
         <AnimatedSphere />
       </Canvas>
     </div>
