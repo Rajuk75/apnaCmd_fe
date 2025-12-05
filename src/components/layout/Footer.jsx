@@ -12,9 +12,9 @@ const Footer = () => {
   return (
     <footer className="bg-[#111] pt-16 pb-8 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand Column */}
-          <div className="space-y-6">
+          <div className="space-y-6 col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2">
               <Sparkles className="w-6 h-6 text-blue-500" />
               <span className="text-white font-bold text-xl tracking-tight">

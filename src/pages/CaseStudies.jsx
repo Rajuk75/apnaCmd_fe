@@ -71,7 +71,7 @@ const CaseStudies = () => {
                 <span className={`text-${study.color}-400 font-bold tracking-widest uppercase text-sm mb-2 block`}>
                   / {study.category} Case Study
                 </span>
-                <h2 className="text-4xl md:text-6xl font-black text-white">{study.project}</h2>
+                <h2 className="text-3xl md:text-6xl font-black text-white">{study.project}</h2>
               </div>
               <div className="hidden md:block">
                  <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all font-medium">

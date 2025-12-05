@@ -26,7 +26,7 @@ const AppDevelopment = () => {
                     <p className="text-gray-400 text-lg leading-relaxed">
                         Mobile usage has surpassed desktop. If you aren't mobile-first, you're last. We design and build polished, high-performance mobile applications that users love to open.
                     </p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
                         <button className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors">
                             Start a Project
                         </button>
@@ -65,7 +65,7 @@ const AppDevelopment = () => {
             </div>
 
             {/* Process Section */}
-            <div className="bg-[#111] border border-white/10 rounded-3xl p-8 md:p-12">
+            <div className="bg-[#111] border border-white/10 rounded-3xl p-6 md:p-12">
                 <h3 className="text-2xl font-bold text-white mb-12 text-center">Our Mobile Lifecycle</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                      <div className="text-center relative">
