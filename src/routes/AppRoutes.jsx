@@ -1,17 +1,42 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import NotFound from '../pages/NotFound';
+import { lazy, Suspense } from 'react';
 import { ROUTES as ROUTE_PATHS } from '../constants/routes';
+import PageLoader from '../components/common/PageLoader';
+import RouteWrapper from '../components/common/RouteWrapper';
+const Home = lazy(() => import('../pages/Home'));
+const Login = lazy(() => import('../pages/Login'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path={ROUTE_PATHS.HOME} element={<Home />} />
-      <Route path={ROUTE_PATHS.LOGIN} element={<Login />} />
-      <Route path={ROUTE_PATHS.NOT_FOUND} element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route 
+          path={ROUTE_PATHS.HOME} 
+          element={
+            <RouteWrapper>
+              <Home />
+            </RouteWrapper>
+          } 
+        />
+        <Route 
+          path={ROUTE_PATHS.LOGIN} 
+          element={
+            <RouteWrapper>
+              <Login />
+            </RouteWrapper>
+          } 
+        />
+        <Route 
+          path={ROUTE_PATHS.NOT_FOUND} 
+          element={
+            <RouteWrapper>
+              <NotFound />
+            </RouteWrapper>
+          } 
+        />
+      </Routes>
+    </Suspense>
   );
 };
 

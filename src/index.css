@@ -35,8 +35,29 @@ html {
         }
     }
 
+    @keyframes loading-bar {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
     .animate-blob {
         animation: blob 7s infinite;
+    }
+
+    .animate-loading-bar {
+        animation: loading-bar 1.5s ease-in-out infinite;
+    }
+
+    .animation-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animation-delay-400 {
+        animation-delay: 0.4s;
     }
 
     .animation-delay-2000 {
