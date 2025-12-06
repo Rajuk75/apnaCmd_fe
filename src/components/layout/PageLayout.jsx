@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from './Layout';
-import WaveBackground from '../home/WaveBackground';
 
 const PageLayout = ({ children, title, subtitle }) => {
   return (
@@ -8,7 +7,7 @@ const PageLayout = ({ children, title, subtitle }) => {
       <div className="relative min-h-[calc(100vh-6rem)] bg-[#0a0a0a] overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <WaveBackground />
+          {/* WaveBackground removed as per request to remove Three.js */}
         </div>
         
         {/* Content Container */}

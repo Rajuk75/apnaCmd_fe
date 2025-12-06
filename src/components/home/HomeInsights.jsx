@@ -35,7 +35,7 @@ const HomeInsights = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#0a0a0a] border-t border-white/5">
+    <div className="w-full py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-16">
           <div>
@@ -95,7 +95,7 @@ const HomeInsights = () => {
              </Link>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

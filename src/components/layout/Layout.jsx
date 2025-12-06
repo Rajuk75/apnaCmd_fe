@@ -10,11 +10,13 @@ const Layout = ({ children }) => {
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col font-sans text-slate-900">
       <Navbar />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         {children}
       </main>
 
-      <Footer className="relative z-50" />
+      <div className="relative z-50 bg-[#0a0a0a]">
+        <Footer />
+      </div>
     </div>
   );
 };

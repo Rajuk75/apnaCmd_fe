@@ -12,8 +12,8 @@ export const APP_TEXT = {
     hi: 'अपने व्यवसाय को बदलें'
   },
   HERO_SUBTITLE: {
-    en: 'Intelligent AI Integration',
-    hi: 'बुद्धिमान एआई एकीकरण'
+    en: 'Modern Software Integration',
+    hi: 'आधुनिक सॉफ्टवेयर एकीकरण'
   },
   HERO_DESCRIPTION: {
     en: 'We build scalable software solutions and integrate cutting-edge AI to streamline your operations and drive growth.',

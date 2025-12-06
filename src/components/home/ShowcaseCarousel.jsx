@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, CheckCircle2, User, FileCode, Rocket, Smartphone, Calendar } from 'lucide-react';
+import purpleFluidBg from '../../assets/purple_fluid_bg.png';
 import { useLanguage } from '../../context/LanguageContext';
 
 const ShowcaseCarousel = () => {
@@ -21,7 +22,8 @@ const ShowcaseCarousel = () => {
   // }, []);
 
   return (
-    <section className="py-20 bg-[#0a0a0a] relative overflow-hidden flex flex-col items-center perspective-1000">
+    <div className="w-full py-10 relative flex flex-col items-center perspective-1000 z-10">
+      {/* Background removed - relies on Parent (HeroSection) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -126,8 +128,8 @@ const ShowcaseCarousel = () => {
       </div>
       
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-900/20 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
-    </section>
+
+    </div>
   );
 };
 

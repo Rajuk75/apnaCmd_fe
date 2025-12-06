@@ -22,7 +22,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="solutions" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <div id="solutions" className="w-full py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#111] rounded-3xl border border-white/5 shadow-2xl p-8 md:p-12 space-y-32">
           {/* Section 1: WHAT WE DO */}
@@ -348,7 +348,7 @@ const ServicesSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
