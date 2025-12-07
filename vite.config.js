@@ -21,12 +21,12 @@ export default defineConfig({
       threshold: 10240,
       deleteOriginFile: false,
     }),
-    visualizer({
-      filename: './dist/stats.html',
-      open: false,
-      gzipSize: true,
-      brotliSize: true,
-    }),
+    // visualizer({
+    //   filename: './dist/stats.html',
+    //   open: false,
+    //   gzipSize: true,
+    //   brotliSize: true,
+    // }),
   ],
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', '@react-three/fiber', '@react-three/drei'],

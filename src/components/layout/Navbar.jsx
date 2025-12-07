@@ -31,7 +31,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation - Centered */}
-        <div className="hidden md:flex items-center gap-8 bg-black/20 backdrop-blur-md px-12 py-3 rounded-full border-x border-white/5 border-t border-t-red-500/60 border-b border-b-cyan-500/60 shadow-[0_-4px_15px_-5px_rgba(239,68,68,0.4),0_4px_15px_-5px_rgba(6,182,212,0.4)]">
+        <div className="hidden md:flex items-center gap-8 bg-black/40 backdrop-blur-md px-12 py-3 rounded-full border-x border-white/5 border-t-2 border-t-red-500 border-b-2 border-b-cyan-500 shadow-[0_-6px_25px_-5px_rgba(239,68,68,0.5),0_6px_25px_-5px_rgba(6,182,212,0.5)]">
           {navLinks.map((link, index) => (
             <Link
               key={index}

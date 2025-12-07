@@ -44,63 +44,77 @@ const HeroSection = () => {
           <img 
             src={purpleFluidBg} 
             alt="Smoke Pattern" 
-            className="w-full h-full object-cover object-right-top opacity-90 scale-125"
-            style={{ filter: 'hue-rotate(130deg) saturate(1.4)' }} // Shift Purple to Green
+            className="w-full h-full object-cover object-right opacity-100 scale-150" 
           />
-          {/* Radial Mask to focus Top-Right */}
-          <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-black/60 to-black"></div>
+          {/* Radial Mask to focus Right Side & Towards Navbar */}
+          <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-black/40 to-black"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent"></div>
       </div>
-      {/* Particles Background - Full Hero */}
+
+      {/* Full Screen Connected Particles */}
       <Particles
-        id="tsparticles"
+        id="tsparticles-full"
         init={particlesInit}
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="fixed inset-0 z-0 pointer-events-none"
         options={{
-          background: {
-            color: {
-              value: "transparent",
-            },
-          },
+          fullScreen: { enable: false },
+          background: { color: "transparent" },
           fpsLimit: 120,
-          interactivity: {
-            events: {
-              onClick: { enable: false, mode: "push" },
-              onHover: { enable: true, mode: "repulse" },
-              resize: true,
-            },
-            modes: {
-              push: { quantity: 4 },
-              repulse: { distance: 200, duration: 0.4 },
-            },
-          },
           particles: {
             color: { value: "#ffffff" },
             links: {
-              color: "#ffffff",
+              color: "#a855f7", // Purple links
               distance: 150,
               enable: true,
-              opacity: 0.2,
+              opacity: 0.3, // Subtle links
               width: 1,
             },
             move: {
               enable: true,
               speed: 1,
               direction: "none",
-              outModes: "bounce",
+              random: false,
+              straight: false,
+              outModes: "out",
             },
             number: {
               density: { enable: true, area: 800 },
-              value: 60,
+              value: 60, // Balanced density
             },
-            opacity: { value: 0.3 },
+            opacity: { value: 0.5 },
             shape: { type: "circle" },
-            size: { value: { min: 1, max: 3 } },
+            size: { value: { min: 1, max: 2 } },
+          },
+          interactivity: {
+            events: {
+              onHover: {
+                enable: true,
+                mode: "grab",
+              },
+              onClick: {
+                enable: true,
+                mode: "push",
+              },
+            },
+            modes: {
+              grab: {
+                distance: 200,
+                links: {
+                  opacity: 0.8,
+                  color: "#a855f7" 
+                },
+              },
+               push: {
+                quantity: 4,
+              },
+            },
           },
           detectRetina: true,
         }}
       />
+
+
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="flex flex-col items-center justify-center">
@@ -108,11 +122,10 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="text-left space-y-8 animate-fade-in-up relative max-w-4xl w-full flex flex-col justify-center min-h-[500px]">
              {/* Subtitle / Tag */}
-             <div className="relative pl-4 border-l-2 border-red-500/50">
-                <span className="text-sm md:text-base text-gray-400 tracking-widest uppercase">
+             <div className="relative pl-4 border-l-2 border-red-500/50 group">
+                <span className="text-sm md:text-base text-gray-400 tracking-widest uppercase relative z-10 font-bold">
                   {getText(text.app.HERO_BADGE)}
                 </span>
-                <div className="absolute top-1/2 left-full w-16 h-[1px] bg-red-500/30 ml-4 hidden md:block"></div>
              </div>
 
             {/* Main Title */}

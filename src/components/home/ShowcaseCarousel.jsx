@@ -9,7 +9,20 @@ const ShowcaseCarousel = () => {
   const cards = text.app.SHOWCASE?.CARDS || [];
   const cardCount = cards.length;
   const theta = 360 / cardCount;
-  const radius = 400; // Adjust radius for spacing
+  
+  // Responsive Radius State to prevent overflow on mobile
+  const [radius, setRadius] = useState(400);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Reduce radius significantly on mobile to pull cards in
+      setRadius(window.innerWidth < 768 ? 220 : 400); 
+    };
+
+    handleResize(); // Set initial
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const rotate = (direction) => {
     setRotation((prev) => direction === 'left' ? prev + theta : prev - theta);
@@ -38,7 +51,7 @@ const ShowcaseCarousel = () => {
         {/* 3D Carousel Container */}
         <div className="relative h-[300px] w-full flex items-center justify-center perspective-[1500px]">
           <div 
-            className="relative w-[380px] h-[220px] preserve-3d transition-transform duration-1000 ease-out"
+            className="relative w-[90vw] md:w-[380px] h-[220px] preserve-3d transition-transform duration-1000 ease-out"
             style={{ transform: `rotateY(${rotation}deg)` }}
           >
             {cards.map((card, index) => {
