@@ -111,6 +111,31 @@ const HeroSection = () => {
             },
           },
           detectRetina: true,
+          responsive: [
+            {
+              // Mobile Optimization: Significantly reduce load to fix lag
+              maxWidth: 768,
+              options: {
+                particles: {
+                  number: {
+                    value: 30, // Half the particles
+                  },
+                  links: {
+                    enable: false, // Disable links (most expensive)
+                  },
+                  move: {
+                    speed: 0.5, // Slower movement
+                  },
+                },
+                interactivity: {
+                  events: {
+                    onHover: { enable: false }, // Disable mouse tracking
+                    onClick: { enable: true, mode: "push" }, // Keep click only
+                  },
+                },
+              },
+            },
+          ],
         }}
       />
 

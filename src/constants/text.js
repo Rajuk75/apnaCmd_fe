@@ -8,16 +8,16 @@ export const APP_TEXT = {
     hi: 'सॉफ्टवेयर समाधान'
   },
   HERO_TITLE: {
-    en: 'Transform your business with',
-    hi: 'अपने व्यवसाय को बदलें'
+    en: 'Building the Future with',
+    hi: 'भविष्य का निर्माण'
   },
   HERO_SUBTITLE: {
-    en: 'Modern Software Integration',
-    hi: 'आधुनिक सॉफ्टवेयर एकीकरण'
+    en: 'Our Innovative Products',
+    hi: 'हमारे अपने उत्पादों के साथ'
   },
   HERO_DESCRIPTION: {
-    en: 'We build scalable software solutions and integrate cutting-edge AI to streamline your operations and drive growth.',
-    hi: 'हम आपके कार्यों को सुव्यवस्थित करने और विकास को गति देने के लिए स्केलेबल सॉफ्टवेयर समाधान बनाते हैं और अत्याधुनिक एआई को एकीकृत करते हैं।'
+    en: 'Innovating for tomorrow, we craft cutting-edge products and scalable ecosystems designed to empower the world.',
+    hi: 'कल के लिए नवाचार करते हुए, हम दुनिया को सशक्त बनाने के लिए डिजाइन किए गए अत्याधुनिक उत्पादों और स्केलेबल इकोसिस्टम को तैयार करते हैं।'
   },
   NAV_DASHBOARD: {
     en: 'Solutions',
