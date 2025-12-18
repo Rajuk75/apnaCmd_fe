@@ -1,16 +1,17 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const VARIANTS = {
-  primary: 'relative bg-black text-white hover:text-gray-100',
-  secondary: 'bg-transparent border border-white/20 text-white hover:bg-white/5',
-  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50',
-  ghost: 'text-gray-600 hover:bg-gray-100',
+  primary: 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-blue-glow-lg hover:scale-105',
+  secondary: 'bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 shadow-soft',
+  outline: 'border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white',
+  ghost: 'text-slate-500 hover:text-blue-600 hover:bg-blue-50',
 };
 
 const SIZES = {
   sm: 'px-4 py-2 text-sm',
-  md: 'px-8 py-4 text-base', // Updated to match design
-  lg: 'px-10 py-5 text-lg',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
 };
 
 const Button = ({ 
@@ -18,35 +19,24 @@ const Button = ({
   variant = 'primary', 
   size = 'md', 
   className = '', 
+  icon = false,
   onClick, 
   ...props 
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-full font-bold transition-all duration-300 cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all duration-300 cursor-pointer';
   const variantStyles = VARIANTS[variant] || VARIANTS.primary;
   const sizeStyles = SIZES[size] || SIZES.md;
 
-  if (variant === 'primary') {
-    return (
-      <div className={`relative group inline-block ${className}`}>
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-        <button
-          className={`${baseStyles} ${variantStyles} ${sizeStyles} w-full`}
-          onClick={onClick}
-          {...props}
-        >
-          {children}
-        </button>
-      </div>
-    );
-  }
-
   return (
     <button
-      className={`${baseStyles} ${variantStyles} ${sizeStyles} ${className}`}
+      className={`group ${baseStyles} ${variantStyles} ${sizeStyles} ${className}`}
       onClick={onClick}
       {...props}
     >
       {children}
+      {icon && (
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      )}
     </button>
   );
 };

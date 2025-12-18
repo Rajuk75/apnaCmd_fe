@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowLeft, Lock } from 'lucide-react';
+import { ArrowLeft, Lock } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -23,7 +23,6 @@ const Login = () => {
 
       if (distance < 0) {
         clearInterval(interval);
-        // Handle expiration if needed
       } else {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -38,67 +37,69 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-white flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 dots-pattern opacity-30"></div>
+      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-blue-200/40 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-blue-100/50 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Back Button */}
       <Link 
         to={ROUTES.HOME} 
-        className="absolute top-8 left-8 flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+        className="absolute top-8 left-8 flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors"
       >
         <ArrowLeft className="w-5 h-5" />
         <span>Back to Home</span>
       </Link>
 
-      <div className="max-w-md w-full bg-[#111] border border-white/10 rounded-2xl p-8 shadow-2xl relative z-10 text-center">
+      <div className="max-w-md w-full bg-white border border-slate-200 rounded-2xl p-8 shadow-soft-lg relative z-10 text-center">
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <div className="p-3 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl">
-            <Sparkles className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-blue-glow">
+            <span className="text-white font-display font-bold text-3xl">S</span>
           </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mb-2">{getText(text.button.LOGIN)}</h2>
-        <p className="text-gray-400 mb-8">Access to the Client Portal is currently restricted.</p>
+        <h2 className="text-3xl font-display font-bold text-slate-900 mb-2">{getText(text.button.LOGIN)}</h2>
+        <p className="text-slate-500 mb-8">Access to the Client Portal is currently restricted.</p>
 
         {/* Countdown Timer */}
         <div className="mb-10">
-          <p className="text-sm text-purple-400 font-medium uppercase tracking-widest mb-4">Opening In</p>
+          <p className="text-sm text-blue-600 font-medium uppercase tracking-widest mb-4">Opening In</p>
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-[#1a1a1a] rounded-lg p-3 border border-white/5">
-              <span className="block text-2xl font-bold text-white">{timeLeft.days}</span>
-              <span className="text-xs text-gray-500">Days</span>
+            <div className="bg-blue-50 rounded-xl p-3 border border-blue-100">
+              <span className="block text-2xl font-bold text-slate-900">{timeLeft.days}</span>
+              <span className="text-xs text-slate-500">Days</span>
             </div>
-            <div className="bg-[#1a1a1a] rounded-lg p-3 border border-white/5">
-              <span className="block text-2xl font-bold text-white">{timeLeft.hours}</span>
-              <span className="text-xs text-gray-500">Hours</span>
+            <div className="bg-blue-50 rounded-xl p-3 border border-blue-100">
+              <span className="block text-2xl font-bold text-slate-900">{timeLeft.hours}</span>
+              <span className="text-xs text-slate-500">Hours</span>
             </div>
-            <div className="bg-[#1a1a1a] rounded-lg p-3 border border-white/5">
-              <span className="block text-2xl font-bold text-white">{timeLeft.minutes}</span>
-              <span className="text-xs text-gray-500">Mins</span>
+            <div className="bg-blue-50 rounded-xl p-3 border border-blue-100">
+              <span className="block text-2xl font-bold text-slate-900">{timeLeft.minutes}</span>
+              <span className="text-xs text-slate-500">Mins</span>
             </div>
-            <div className="bg-[#1a1a1a] rounded-lg p-3 border border-white/5">
-              <span className="block text-2xl font-bold text-white">{timeLeft.seconds}</span>
-              <span className="text-xs text-gray-500">Secs</span>
+            <div className="bg-blue-50 rounded-xl p-3 border border-blue-100">
+              <span className="block text-2xl font-bold text-slate-900">{timeLeft.seconds}</span>
+              <span className="text-xs text-slate-500">Secs</span>
             </div>
           </div>
         </div>
 
         {/* Disabled Login Form */}
         <div className="space-y-4 opacity-50 pointer-events-none select-none relative">
-            {/* Overlay Lock */}
-            <div className="absolute inset-0 z-20 flex items-center justify-center">
-                <div className="bg-black/80 backdrop-blur-sm p-3 rounded-full border border-white/10">
-                    <Lock className="w-6 h-6 text-gray-400" />
-                </div>
+          {/* Overlay Lock */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center">
+            <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full border border-slate-200 shadow-soft">
+              <Lock className="w-6 h-6 text-slate-400" />
             </div>
+          </div>
 
           <div>
             <input 
               type="email" 
               placeholder="Email Address" 
-              className="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none"
               disabled
             />
           </div>
@@ -106,11 +107,11 @@ const Login = () => {
             <input 
               type="password" 
               placeholder="Password" 
-              className="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none"
               disabled
             />
           </div>
-          <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-3 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed">
+          <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed">
             Sign In
           </button>
         </div>

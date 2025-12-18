@@ -1,7 +1,6 @@
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
-import { Check, Sparkles, Zap } from 'lucide-react';
-import Button from '../components/common/Button';
+import { Check, Sparkles } from 'lucide-react';
 
 const Pricing = () => {
   const plans = [
@@ -40,31 +39,31 @@ const Pricing = () => {
         {plans.map((plan, index) => (
           <div 
             key={index}
-            className={`relative rounded-3xl p-8 border flex flex-col ${
+            className={`relative rounded-2xl p-8 border flex flex-col ${
               plan.highlight 
-                ? 'bg-[#111] border-purple-500 shadow-2xl shadow-purple-900/20' 
-                : 'bg-white/5 border-white/10 hover:border-white/20'
+                ? 'bg-white border-blue-500 shadow-blue-glow-lg' 
+                : 'bg-white border-slate-200 hover:border-blue-300 shadow-soft'
             }`}
           >
             {plan.highlight && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-lg">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-blue-glow">
                 <Sparkles className="w-3 h-3" /> Most Popular
               </div>
             )}
             
             <div className="mb-8">
-              <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-white">{plan.price}</span>
-                <span className="text-gray-400">{plan.period}</span>
+                <span className="text-4xl font-display font-bold text-slate-900">{plan.price}</span>
+                <span className="text-slate-400">{plan.period}</span>
               </div>
-              <p className="text-gray-400 mt-4 text-sm leading-relaxed">{plan.description}</p>
+              <p className="text-slate-500 mt-4 text-sm leading-relaxed">{plan.description}</p>
             </div>
 
             <ul className="space-y-4 mb-8 flex-1">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
-                  <div className={`p-1 rounded-full ${plan.highlight ? 'bg-purple-500/20 text-purple-400' : 'bg-white/10 text-gray-400'}`}>
+                <li key={i} className="flex items-center gap-3 text-sm text-slate-600">
+                  <div className={`p-1 rounded-full ${plan.highlight ? 'bg-blue-50 text-blue-500' : 'bg-slate-100 text-slate-400'}`}>
                     <Check className="w-3 h-3" />
                   </div>
                   {feature}
@@ -74,8 +73,8 @@ const Pricing = () => {
 
             <button className={`w-full py-4 rounded-xl font-bold text-sm transition-all duration-200 ${
               plan.highlight 
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg hover:shadow-purple-500/25' 
-                : 'bg-white text-black hover:bg-gray-200'
+                ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-blue-glow-lg hover:scale-105' 
+                : 'bg-slate-900 text-white hover:bg-slate-800'
             }`}>
               Get Started
             </button>

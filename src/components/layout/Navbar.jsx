@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Globe, Menu, X, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Globe, Menu, X, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ROUTES } from '../../constants/routes';
 
 const Navbar = () => {
   const { language, toggleLanguage, getText, text } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { name: 'Solutions', path: ROUTES.SOLUTIONS },
@@ -15,26 +17,45 @@ const Navbar = () => {
     { name: 'Insights', path: ROUTES.INSIGHTS },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex items-center justify-between w-full max-w-7xl shadow-2xl shadow-purple-500/10">
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+      <nav className={`mx-auto max-w-7xl transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-white/90 backdrop-blur-xl shadow-soft border border-slate-200/50' 
+          : 'bg-transparent border border-transparent'
+      } rounded-full px-6 py-3 flex items-center justify-between`}>
+        
         {/* Logo */}
-        <Link to={ROUTES.HOME} className="flex items-center gap-2 group">
-          <div className="p-1.5 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-lg group-hover:scale-105 transition-transform duration-300">
-            <Sparkles className="w-5 h-5 text-white" />
+        <Link to={ROUTES.HOME} className="flex items-center gap-3 group">
+          <div className="relative">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-blue-glow">
+              <span className="text-white font-display font-bold text-xl">S</span>
+            </div>
           </div>
-          <span className="text-white font-bold text-lg tracking-tight">
+          <span className="text-slate-900 font-display font-semibold text-xl tracking-tight hidden sm:block">
             {getText(text.app.APP_NAME)}
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link, index) => (
             <Link
               key={index}
               to={link.path}
-              className="text-gray-400 hover:text-white text-sm font-medium transition-colors duration-200"
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group rounded-full ${
+                location.pathname === link.path 
+                  ? 'text-blue-600 bg-blue-50' 
+                  : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50'
+              }`}
             >
               {link.name}
             </Link>
@@ -42,60 +63,80 @@ const Navbar = () => {
         </div>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           {/* Language Selector */}
           <button
             onClick={() => toggleLanguage()}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium"
+            className="flex items-center gap-2 px-3 py-2 rounded-full text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-all text-sm font-medium"
           >
             <Globe className="w-4 h-4" />
-            <span className="uppercase">{language}</span>
+            <span className="uppercase font-mono text-xs">{language}</span>
           </button>
 
           {/* Login Button */}
-          <Link to={ROUTES.LOGIN} className="bg-white/10 hover:bg-white/20 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border border-white/5">
+          <Link 
+            to={ROUTES.LOGIN} 
+            className="group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:shadow-blue-glow hover:scale-105"
+          >
             {getText(text.button.LOGIN)}
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-300 hover:text-white"
+          className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-700 hover:bg-blue-50 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </nav>
 
       {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-20 left-4 right-4 bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 shadow-2xl md:hidden flex flex-col gap-4 animate-in slide-in-from-top-4 duration-200">
+      <div className={`absolute top-20 left-4 right-4 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-soft-lg md:hidden transition-all duration-300 ${
+        isMobileMenuOpen 
+          ? 'opacity-100 translate-y-0 pointer-events-auto' 
+          : 'opacity-0 -translate-y-4 pointer-events-none'
+      }`}>
+        <div className="p-4 space-y-1">
           {navLinks.map((link, index) => (
             <Link
               key={index}
               to={link.path}
-              className="text-gray-300 hover:text-white py-2 px-4 hover:bg-white/5 rounded-lg transition-colors"
+              className={`flex items-center justify-between py-3 px-4 rounded-xl transition-colors ${
+                location.pathname === link.path 
+                  ? 'bg-blue-50 text-blue-600' 
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-blue-600'
+              }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {link.name}
+              <span className="font-medium">{link.name}</span>
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
           ))}
-          <div className="h-px bg-white/10 my-2" />
-          <div className="flex items-center justify-between px-4">
-            <span className="text-gray-400 text-sm">Language</span>
+        </div>
+        
+        <div className="border-t border-slate-100 p-4">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-slate-400 text-sm">Language</span>
             <button
               onClick={() => toggleLanguage()}
-              className="flex items-center gap-2 text-white font-medium"
+              className="flex items-center gap-2 text-slate-700 font-mono text-sm px-3 py-1.5 rounded-full border border-slate-200 hover:bg-blue-50"
             >
               <Globe className="w-4 h-4" />
               <span className="uppercase">{language}</span>
             </button>
           </div>
-          <Link to={ROUTES.LOGIN} className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2.5 rounded-xl font-medium mt-2 text-center block">
+          <Link 
+            to={ROUTES.LOGIN} 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-bold transition-all hover:shadow-blue-glow"
+          >
             {getText(text.button.LOGIN)}
+            <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   const { getText, text } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col font-sans text-slate-900">
+    <div className="min-h-screen bg-white flex flex-col font-sans text-slate-900">
       <Navbar />
 
       <main className="flex-grow pt-24">

@@ -1,14 +1,15 @@
 import React from 'react';
 import Layout from './Layout';
-import WaveBackground from '../home/WaveBackground';
 
 const PageLayout = ({ children, title, subtitle }) => {
   return (
     <Layout>
-      <div className="relative min-h-[calc(100vh-6rem)] bg-[#0a0a0a] overflow-hidden">
-        {/* Background */}
+      <div className="relative min-h-[calc(100vh-6rem)] bg-white overflow-hidden">
+        {/* Background Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <WaveBackground />
+          <div className="absolute inset-0 dots-pattern opacity-30"></div>
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[150px]"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50/50 rounded-full blur-[100px]"></div>
         </div>
         
         {/* Content Container */}
@@ -17,12 +18,12 @@ const PageLayout = ({ children, title, subtitle }) => {
           {(title || subtitle) && (
             <div className="text-center mb-16 animate-fade-in-up">
               {title && (
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6 tracking-tight">
                   {title}
                 </h1>
               )}
               {subtitle && (
-                <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
                   {subtitle}
                 </p>
               )}
@@ -30,7 +31,7 @@ const PageLayout = ({ children, title, subtitle }) => {
           )}
           
           {/* Page Content */}
-          <div className="animate-fade-in-up delay-100">
+          <div className="animate-fade-in-up animation-delay-100">
             {children}
           </div>
         </div>

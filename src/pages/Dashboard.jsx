@@ -4,10 +4,10 @@ import { Activity, Users, TrendingUp, DollarSign } from 'lucide-react';
 
 const Dashboard = () => {
   const stats = [
-    { label: 'Total Users', value: '12,345', icon: Users, change: '+12%', color: 'blue' },
-    { label: 'Active Sessions', value: '843', icon: Activity, change: '+5.4%', color: 'green' },
-    { label: 'Revenue', value: '$45,231', icon: DollarSign, change: '+18%', color: 'yellow' },
-    { label: 'Growth', value: '24.5%', icon: TrendingUp, change: '+2.1%', color: 'purple' },
+    { label: 'Total Users', value: '12,345', icon: Users, change: '+12%' },
+    { label: 'Active Sessions', value: '843', icon: Activity, change: '+5.4%' },
+    { label: 'Revenue', value: '$45,231', icon: DollarSign, change: '+18%' },
+    { label: 'Growth', value: '24.5%', icon: TrendingUp, change: '+2.1%' },
   ];
 
   return (
@@ -19,38 +19,38 @@ const Dashboard = () => {
         {stats.map((stat, index) => (
           <div 
             key={index} 
-            className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl hover:border-purple-500/30 transition-all duration-300 group"
+            className="bg-white border border-slate-200 p-6 rounded-2xl hover:border-blue-300 transition-all duration-300 group shadow-soft hover:shadow-soft-lg"
           >
             <div className="flex justify-between items-start mb-4">
-              <div className={`p-3 rounded-xl bg-${stat.color}-500/10 text-${stat.color}-500`}>
-                <stat.icon className="w-6 h-6" />
+              <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-500 group-hover:border-blue-500 transition-all">
+                <stat.icon className="w-6 h-6 text-blue-500 group-hover:text-white transition-colors" />
               </div>
-              <span className="text-green-400 text-xs font-bold bg-green-500/10 px-2 py-1 rounded-full">
+              <span className="text-green-600 text-xs font-bold bg-green-50 border border-green-100 px-2 py-1 rounded-full">
                 {stat.change}
               </span>
             </div>
-            <h3 className="text-3xl font-bold text-white mb-1">{stat.value}</h3>
-            <p className="text-gray-400 text-sm">{stat.label}</p>
+            <h3 className="text-3xl font-display font-bold text-slate-900 mb-1">{stat.value}</h3>
+            <p className="text-slate-500 text-sm">{stat.label}</p>
           </div>
         ))}
       </div>
 
       {/* Recent Activity Section */}
       <div className="mt-10">
-        <h2 className="text-2xl font-bold text-white mb-6">Recent Activity</h2>
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden">
+        <h2 className="text-2xl font-display font-bold text-slate-900 mb-6">Recent Activity</h2>
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-soft">
           {[1, 2, 3].map((_, i) => (
-            <div key={i} className="p-4 border-b border-white/5 hover:bg-white/5 transition-colors flex items-center justify-between">
+            <div key={i} className="p-4 border-b border-slate-100 hover:bg-blue-50/50 transition-colors flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold shadow-blue-glow">
                   JS
                 </div>
                 <div>
-                  <p className="text-white font-medium">New user registration</p>
-                  <p className="text-gray-500 text-xs">2 minutes ago</p>
+                  <p className="text-slate-900 font-medium">New user registration</p>
+                  <p className="text-slate-400 text-xs">2 minutes ago</p>
                 </div>
               </div>
-              <button className="text-purple-400 text-sm hover:text-purple-300">View</button>
+              <button className="text-blue-600 text-sm hover:text-blue-700 font-medium">View</button>
             </div>
           ))}
         </div>

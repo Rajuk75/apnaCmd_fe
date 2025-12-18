@@ -25,7 +25,7 @@ const Blog = () => {
       date: 'Nov 28, 2025',
       category: 'Engineering'
     },
-     { // Duplicate for grid fill
+    {
       title: 'AI in Modern Apps',
       excerpt: 'How to integrate LLMs and machine learning into your everyday applications.',
       author: 'Emily White',
@@ -43,23 +43,23 @@ const Blog = () => {
         {posts.map((post, index) => (
           <div 
             key={index}
-            className="group flex flex-col bg-[#111] border border-white/10 rounded-3xl overflow-hidden hover:border-purple-500/50 transition-all duration-300"
+            className="group flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-blue-300 transition-all duration-300 shadow-soft hover:shadow-soft-lg"
           >
             {/* Image Placeholder */}
-            <div className="h-48 bg-gray-900 relative overflow-hidden">
-               <div className={`absolute inset-0 bg-gradient-to-br from-purple-900/20 to-blue-900/20 group-hover:scale-110 transition-transform duration-700`}></div>
-               <div className="absolute inset-0 flex items-center justify-center">
-                 <BookOpen className="w-12 h-12 text-white/10 group-hover:text-white/20 transition-colors" />
-               </div>
-               <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 text-xs font-bold text-white bg-white/10 backdrop-blur-md rounded-full border border-white/10">
-                    {post.category}
-                  </span>
-               </div>
+            <div className="h-48 bg-gradient-to-br from-blue-50 to-blue-100 relative overflow-hidden">
+              <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-700"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <BookOpen className="w-12 h-12 text-blue-200 group-hover:text-blue-300 transition-colors" />
+              </div>
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 text-xs font-bold text-white bg-blue-500 rounded-full shadow-blue-glow">
+                  {post.category}
+                </span>
+              </div>
             </div>
 
             <div className="p-8 flex-1 flex flex-col">
-              <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+              <div className="flex items-center gap-4 text-xs text-slate-400 mb-4 font-mono">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" /> {post.date}
                 </span>
@@ -68,15 +68,15 @@ const Blog = () => {
                 </span>
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+              <h3 className="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                 {post.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed mb-6 flex-1">
+              <p className="text-slate-500 leading-relaxed mb-6 flex-1">
                 {post.excerpt}
               </p>
 
-              <button className="flex items-center gap-2 text-white font-medium hover:gap-4 transition-all duration-300 self-start group/btn">
-                Read Article <ArrowRight className="w-4 h-4 text-purple-500" />
+              <button className="flex items-center gap-2 text-blue-600 font-medium hover:gap-4 transition-all duration-300 self-start group/btn">
+                Read Article <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>

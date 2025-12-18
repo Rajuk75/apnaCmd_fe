@@ -1,6 +1,6 @@
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
-import { BookOpen, User, ArrowRight, Tag, Clock } from 'lucide-react';
+import { ArrowRight, Tag, Clock } from 'lucide-react';
 
 const Insights = () => {
   const posts = [
@@ -40,7 +40,7 @@ const Insights = () => {
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80'
     },
-     {
+    {
       id: 4,
       title: 'AI in Modern Apps: Beyond Chatbots',
       excerpt: 'How to integrate LLMs, vector databases, and semantic search into your everyday applications to create truly intelligent user flows.',
@@ -61,36 +61,36 @@ const Insights = () => {
     >
       {/* Featured Post (First one) */}
       <div className="mb-16">
-         <div className="group relative bg-[#111] border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all cursor-pointer">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="h-64 md:h-auto overflow-hidden">
-                    <img src={posts[0].image} alt={posts[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                    <div className="flex items-center gap-3 mb-6">
-                        <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-wider">
-                            Featured
-                        </span>
-                        <span className="text-gray-500 text-sm flex items-center gap-1">
-                            <Clock className="w-3 h-3" /> {posts[0].readTime}
-                        </span>
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
-                        {posts[0].title}
-                    </h2>
-                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                        {posts[0].excerpt}
-                    </p>
-                    <div className="flex items-center gap-4">
-                        <img src={posts[0].avatar} alt={posts[0].author} className="w-10 h-10 rounded-full border border-white/10" />
-                        <div>
-                            <p className="text-white font-bold text-sm">{posts[0].author}</p>
-                            <p className="text-gray-500 text-xs">{posts[0].role}</p>
-                        </div>
-                    </div>
-                </div>
+        <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-blue-300 hover:shadow-soft-lg transition-all cursor-pointer">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="h-64 md:h-auto overflow-hidden">
+              <img src={posts[0].image} alt={posts[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
-         </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider">
+                  Featured
+                </span>
+                <span className="text-slate-400 text-sm flex items-center gap-1">
+                  <Clock className="w-3 h-3" /> {posts[0].readTime}
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
+                {posts[0].title}
+              </h2>
+              <p className="text-slate-500 text-lg mb-8 leading-relaxed">
+                {posts[0].excerpt}
+              </p>
+              <div className="flex items-center gap-4">
+                <img src={posts[0].avatar} alt={posts[0].author} className="w-10 h-10 rounded-full border border-slate-200" />
+                <div>
+                  <p className="text-slate-900 font-bold text-sm">{posts[0].author}</p>
+                  <p className="text-slate-400 text-xs">{posts[0].role}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Grid for other posts */}
@@ -98,20 +98,20 @@ const Insights = () => {
         {posts.slice(1).map((post) => (
           <div 
             key={post.id}
-            className="group flex flex-col bg-[#0f0f0f] border border-white/5 rounded-3xl overflow-hidden hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300"
+            className="group flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-blue-300 hover:shadow-soft-lg transition-all duration-300"
           >
             {/* Image */}
             <div className="h-56 relative overflow-hidden">
-               <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-               <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 text-xs font-bold text-black bg-white backdrop-blur-md rounded-full shadow-lg">
-                    {post.category}
-                  </span>
-               </div>
+              <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 text-xs font-bold text-white bg-blue-500 rounded-full shadow-blue-glow">
+                  {post.category}
+                </span>
+              </div>
             </div>
 
             <div className="p-8 flex-1 flex flex-col">
-              <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+              <div className="flex items-center gap-4 text-xs text-slate-400 mb-4">
                 <span className="flex items-center gap-1">
                   <Tag className="w-3 h-3" /> {post.date}
                 </span>
@@ -120,20 +120,20 @@ const Insights = () => {
                 </span>
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
+              <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+              <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
                 {post.excerpt}
               </p>
 
-              <div className="flex items-center justify-between pt-6 border-t border-white/5">
+              <div className="flex items-center justify-between pt-6 border-t border-slate-100">
                 <div className="flex items-center gap-3">
-                    <img src={post.avatar} alt={post.author} className="w-8 h-8 rounded-full border border-white/10" />
-                    <span className="text-gray-300 text-xs font-medium">{post.author}</span>
+                  <img src={post.avatar} alt={post.author} className="w-8 h-8 rounded-full border border-slate-200" />
+                  <span className="text-slate-600 text-xs font-medium">{post.author}</span>
                 </div>
-                <button className="text-white hover:text-purple-400 transition-colors">
-                    <ArrowRight className="w-5 h-5" />
+                <button className="text-blue-500 hover:text-blue-600 transition-colors">
+                  <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
             </div>
